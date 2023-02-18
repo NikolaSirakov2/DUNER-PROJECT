@@ -33,47 +33,60 @@ class ViewController {
       case "menu":
         this.renderMenuPage();
         break;
-       case "cart":
-        this.card 
+       
     }
   };
 
-  renderMenuPage = () => {
-    let dunerContainer = document.querySelector("#menu .container");
-  
-    this.dunerManager.dunerList.forEach((duner) => {
-      let card = createElement("div");
-      card.classList.add("card");
-  
-      let img = createElement("img");
-      img.src = duner.image;
-      img.style.width = "270px"
-  
-      let name = createElement("div");
-      name.innerText = duner.name;
-  
-      let weight = createElement("div");
-      weight.innerText = duner.weight;
-  
-      let category = createElement("div");
-      category.innerText = duner.category;
-  
-      let price = createElement("div");
-      price.innerText = duner.price;
-  
-      let count = createElement("input");
-      count.type = "number";
-      count.value = 1;
-  
-      let addToCart = createElement("button");
-      addToCart.innerText = "Add to Cart";
-  
-      card.append(img, name, weight, category, price, count, addToCart);
-  
-      dunerContainer.appendChild(card);
-    });
+  renderDuners = (dunerList, container) => {
+        container.innerHTML = "";
 
-    console.log(dunerContainer.length);
+        dunerList.forEach((duner) => {
+        let card = createElement("div");
+        card.classList.add("card");
+    
+        let img = createElement("img");
+        img.src = duner.image;
+        img.style.width = "230px"
+    
+        let name = createElement("div");
+        name.innerText = duner.name;
+    
+        let weight = createElement("div");
+        weight.innerText = duner.weight;
+    
+        let category = createElement("div");
+        category.innerText = duner.category;
+    
+        let price = createElement("div");
+        price.innerText = duner.price;
+    
+        let count = createElement("input");
+        count.type = "number";
+        count.value = 1;
+        count.style.width = "100px"
+    
+        let addToCart = createElement("button");
+        addToCart.innerText = "Add to Cart";
+    
+        card.append(img, name, weight, category, price, count, addToCart);
+    
+        container.appendChild(card);
+      });
+  }
+
+  renderMenuPage = () => {
+    let searchInput = document.getElementById("searhInput");
+
+    searchInput.addEventListener("input", (e) => {
+        let result = this.dunerManager.search(e.target.value);
+        
+        this.renderDuners(result, dunerContainer);
+    })
+
+    let dunerContainer = document.querySelector("#menu .container");
+    
+    this.renderDuners(this.dunerManager.dunerList, dunerContainer);
+    
   }  
 }
 
