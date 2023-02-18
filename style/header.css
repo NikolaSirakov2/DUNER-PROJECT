@@ -13,7 +13,7 @@ header h1 {
     font-size: xx-large;
 }
 
-header .cartCount {
+header #cartCount {
     position: absolute;
     display: flex;
     background-color: red;
@@ -26,4 +26,8 @@ header .cartCount {
     border-radius: 50%;
     align-items: center;
     justify-content: center;
+}
+
+a {
+    text-decoration: none;
 }
