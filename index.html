@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/header.css" />
     <link rel="stylesheet" href="./style/main.css" />
+    <script src="./data.js"></script>
+    <script src="./model/DunerManager.js"></script>
   </head>
   <body>
     <header>
@@ -33,31 +35,32 @@
     <footer>
       <h2>&copy Copyright Nikola Sirakov 2023</h2>
     </footer>
-  </body>
 
-  <script>
-    function changeMainPage() {
+    <script>
+      function changeMainPage() {
         let hash = window.location.hash.slice(1);
         let menu = document.getElementById("menu");
         let cart = document.getElementById("cart");
         let order = document.getElementById("order");
         let cartCount = document.getElementById("cartCount");
 
-        if(hash === "menu"){
-            menu.style.display = "flex";
-            cart.style.display = "none";
-            order.style.display = "none";
-        } else if(hash === "cart") {
-            menu.style.display = "none";
-            cart.style.display = "flex";
-            order.style.display = "none";
-        } else if(hash === "order") {
-            menu.style.display = "none";
-            cart.style.display = "none";
-            order.style.display = "flex";
+        if (hash === "menu") {
+          menu.style.display = "flex";
+          cart.style.display = "none";
+          order.style.display = "none";
+        } else if (hash === "cart") {
+          menu.style.display = "none";
+          cart.style.display = "flex";
+          order.style.display = "none";
+        } else if (hash === "order") {
+          menu.style.display = "none";
+          cart.style.display = "none";
+          order.style.display = "flex";
         }
-    }
+      }
 
-    window.addEventListener("hashchange", changeMainPage);
-  </script>
+      window.addEventListener("hashchange", changeMainPage);
+    </script>
+    <script src="./Controller.js"></script>
+  </body>
 </html>
