@@ -1,0 +1,1 @@
+let dunerManager = new DunerManager();
