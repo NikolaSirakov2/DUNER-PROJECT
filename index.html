@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="./style/main.css" />
     <script src="./data.js"></script>
     <script src="./model/DunerManager.js"></script>
+    <script src="./utils/helper.js"></script>
   </head>
+
   <body>
     <header>
       <img width="100" src="./images/logo.jpeg" alt="logo" />
@@ -27,40 +29,15 @@
     </header>
 
     <main>
-      <div id="menu"></div>
+      <div id="menu">
+        <input type="text" id="searhInput" placeholder="What do you want to eat?">
+        <div class="container">
+            </div>
+      </div>
       <div id="cart"></div>
       <div id="order"></div>
     </main>
-
-    <footer>
-      <h2>&copy Copyright Nikola Sirakov 2023</h2>
-    </footer>
-
-    <script>
-      function changeMainPage() {
-        let hash = window.location.hash.slice(1);
-        let menu = document.getElementById("menu");
-        let cart = document.getElementById("cart");
-        let order = document.getElementById("order");
-        let cartCount = document.getElementById("cartCount");
-
-        if (hash === "menu") {
-          menu.style.display = "flex";
-          cart.style.display = "none";
-          order.style.display = "none";
-        } else if (hash === "cart") {
-          menu.style.display = "none";
-          cart.style.display = "flex";
-          order.style.display = "none";
-        } else if (hash === "order") {
-          menu.style.display = "none";
-          cart.style.display = "none";
-          order.style.display = "flex";
-        }
-      }
-
-      window.addEventListener("hashchange", changeMainPage);
-    </script>
-    <script src="./Controller.js"></script>
+    
+    <script src="./ViewController.js"></script>
   </body>
 </html>
