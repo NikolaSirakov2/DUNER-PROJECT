@@ -1,11 +1,12 @@
 main>div {
-    height: 85vh;
+    height: 108vh;
 
 }
 
 #menu {
     background-color: aquamarine;
     display: flex;
+    flex-wrap: wrap;
 }
 
 #cart {
@@ -16,4 +17,22 @@ main>div {
 #order {
     background-color: cornflowerblue;
     display: none;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#searhInput {
+    height: 30px;
+    width: 200px;
+    margin: 5px;
+}
+
+.card {
+    position: relative;
+    width: 270px;
+    background-color: bisque;
 }
