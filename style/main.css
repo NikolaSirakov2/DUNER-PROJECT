@@ -1,15 +1,18 @@
 main>div {
-    height: 90vh;
+    height: 85vh;
 }
 
-#start {
+#menu {
     background-color: aquamarine;
+    display: flex;
 }
 
 #cart {
     background-color: coral;
+    display: none;
 }
 
 #order {
     background-color: cornflowerblue;
+    display: none;
 }
