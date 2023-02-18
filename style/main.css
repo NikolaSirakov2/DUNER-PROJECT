@@ -1,0 +1,15 @@
+main>div {
+    height: 90vh;
+}
+
+#start {
+    background-color: aquamarine;
+}
+
+#cart {
+    background-color: coral;
+}
+
+#order {
+    background-color: cornflowerblue;
+}
