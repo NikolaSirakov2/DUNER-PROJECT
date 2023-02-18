@@ -1,7 +1,29 @@
 header {
+    position: relative;
     height: 100px;
     background-color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+}
+
+header h1 {
+    color: bisque;
+    font-size: xx-large;
+}
+
+header .cartCount {
+    position: absolute;
+    display: flex;
+    background-color: red;
+    color: aliceblue;
+    width: 20px;
+    height: 20px;
+    right: 55px;
+    top: 25px;
+    border: 1px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
 }
