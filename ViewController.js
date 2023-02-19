@@ -34,6 +34,9 @@ class ViewController {
       case "cart":
         this.renderCartPage();
         break;
+      case "order":
+        this.renderCartPage();
+        break;
     }
   };
 
@@ -64,6 +67,7 @@ class ViewController {
       let count = createElement("input");
       count.type = "number";
       count.value = 1;
+      count.min = "1";
       count.style.width = "100px";
 
       let addToCart = createElement("button");
@@ -100,6 +104,8 @@ class ViewController {
     if (this.cartManager.cartItems.length) {
       let cartCount = document.getElementById("cartCount");
       let cartItemsList = createElement("ol");
+      let sum = 0;
+
       this.cartManager.cartItems.forEach((cartItem) => {
         let row = createElement("li");
 
@@ -111,14 +117,22 @@ class ViewController {
 
         let count = createElement("input");
         count.type = "number";
+        count.min = "1";
         count.value = cartItem.count;
         count.addEventListener("input", (e) => {
           this.cartManager.editCartItems(cartItem, Number(e.target.value));
-          cartCount.innerText =
-            Number(cartCount.innerText) + 1;
+          cartCount.innerText = Number(cartCount.innerText) + 1;
         });
 
+        sum += Number(cartItem.price) * Number(cartItem.count);
+
         let delBtn = createElement("button");
+        delBtn.addEventListener("click", () => {
+          this.cartManager.editCartItems(cartItem, 0);
+          row.parentElement.removeChild(row);
+          let newSum = document.getElementById("labelTotal");
+          newSum.innerText = this.cartManager.getTotalSum();
+        });
         delBtn.innerText = "X";
 
         row.append(name, price, count, delBtn);
@@ -127,11 +141,39 @@ class ViewController {
       });
 
       cartPage.append(cartItemsList);
+
+      let orderInfo = createElement("div");
+      let label = createElement("span");
+      label.id = "labelTotal";
+      label.innerText = `Total: ${sum.toFixed(2)}`;
+
+      let orderButton = createElement("button");
+      orderButton.innerText = "Order";
+      orderButton.addEventListener("click", () => {
+        window.location.hash = "order";
+      });
+
+      orderInfo.append(label, orderButton);
+
+      cartPage.appendChild(orderInfo);
     } else {
       cartPage.append(
         (createElement("p").innerText = "Изберете продукти от менюто!")
       );
     }
+  };
+
+  renderOrderPage = () => {
+
+    let deliveryForm = document.getElementById("deliveryButton");
+
+    deliveryForm.addEventListener("submit", (event) => {
+        // event.preventDefault();
+        console.log(event.target);
+        
+        // this.cartManager.deliver(event.currentTarget.address.value);
+    })
+
   };
 }
 
