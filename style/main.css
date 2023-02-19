@@ -19,6 +19,10 @@ main>div {
 #order {
     background-color: cornflowerblue;
     display: none;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .container {
@@ -50,4 +54,12 @@ main>div {
 .cartContainer li span {
     background-color: antiquewhite;
     padding: 2px 5px;
+}
+
+#deliveryForm {
+    width: 50%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
