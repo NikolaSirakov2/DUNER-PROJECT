@@ -94,39 +94,45 @@ class ViewController {
   };
 
   renderCartPage = () => {
+    let cartPage = document.querySelector(".cartContainer");
+    cartPage.innerHTML = "";
 
-        let cartPage = document.getElementsByClassName(".cartContainer");
+    if (this.cartManager.cartItems.length) {
+      let cartCount = document.getElementById("cartCount");
+      let cartItemsList = createElement("ol");
+      this.cartManager.cartItems.forEach((cartItem) => {
+        let row = createElement("li");
 
-        let cartItemsList = createElement("ol");
-;
-         this.cartManager.cartItems.forEach(cartItem => {
+        let name = createElement("span");
+        name.innerText = cartItem.name;
 
-            let row = createElement("li");
+        let price = createElement("span");
+        price.innerText = cartItem.price;
 
-            let name = createElement("span");
-            name.innerText = cartItem.name;
+        let count = createElement("input");
+        count.type = "number";
+        count.value = cartItem.count;
+        count.addEventListener("input", (e) => {
+          this.cartManager.editCartItems(cartItem, Number(e.target.value));
+          cartCount.innerText =
+            Number(cartCount.innerText) + 1;
+        });
 
-            let price = createElement("span");
-            price.innerText = cartItem.price;
+        let delBtn = createElement("button");
+        delBtn.innerText = "X";
 
-            let count = createElement("span");
-            count.type = "number";
-            count.innerText = cartItem.count;
+        row.append(name, price, count, delBtn);
 
-            let delBtn = createElement("button");
-            delBtn.innerText = "X";
+        cartItemsList.appendChild(row);
+      });
 
-
-            row.append(
-                name,
-                price,
-                count,
-                delBtn
-            )
-
-            cartItemsList.appendChild(row);
-         })
-  }
+      cartPage.append(cartItemsList);
+    } else {
+      cartPage.append(
+        (createElement("p").innerText = "Изберете продукти от менюто!")
+      );
+    }
+  };
 }
 
 let viewController = new ViewController();
