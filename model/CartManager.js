@@ -6,10 +6,23 @@ class CartItem {
     }
 }
 
+class HistoryItem {
+    constructor(productList,address){
+        this.date = new Date().toLocaleDateString();
+        this.address = address;
+        
+
+        // this.productList = productList.map( item => `${item.name} ${item.count}`).join(", ");
+
+        // this.total = productList.reduce((acc, cartItem) => acc + (Number(cartItem.price)*Number(cartItem.count)), 0);
+    }
+}
+
 
 class CartManager {
 
     cartItems = [];
+    orderHistory = [];
 
     addToCartt = (duner, count) => {
 
@@ -23,6 +36,22 @@ class CartManager {
     }
 
     editCartItems = (cartItem, newCount) => {
-        cartItem.count = newCount;
+        if(newCount === 0){
+
+            let index = this.cartItems.findIndex(item => item.name = cartItem.name);
+
+            this.cartItems.splice(index, 1);
+        } else {
+            cartItem.count = newCount;
+        }
+        
+    }
+
+    getTotalSum = () => {
+        return this.cartItems.reduce((acc, cartItem) => acc + (Number(cartItem.price)*Number(cartItem.count)), 0);
+    }
+
+    deliver = (address) => {
+        this.orderHistory.push(new HistoryItem(this.cartItems, address));
     }
 }
