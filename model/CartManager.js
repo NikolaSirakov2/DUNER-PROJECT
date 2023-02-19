@@ -21,4 +21,8 @@ class CartManager {
             this.cartItems.push(new CartItem(duner.name, duner.price, count));
         }
     }
+
+    editCartItems = (cartItem, newCount) => {
+        cartItem.count = newCount;
+    }
 }
