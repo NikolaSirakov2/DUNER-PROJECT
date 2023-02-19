@@ -12,7 +12,7 @@ class ViewController {
     let menu = document.getElementById("menu");
     let cart = document.getElementById("cart");
     let order = document.getElementById("order");
-    let cartCount = document.getElementById("cartCount");
+    
 
     if (hash === "menu") {
       menu.style.display = "flex";
@@ -40,6 +40,7 @@ class ViewController {
 
   renderDuners = (dunerList, container) => {
         container.innerHTML = "";
+        let cartCount = document.getElementById("cartCount");
 
         dunerList.forEach((duner) => {
         let card = createElement("div");
@@ -70,6 +71,7 @@ class ViewController {
         addToCart.innerText = "Add to Cart";
         addToCart.addEventListener("click", () => {
             this.cartManager.addToCartt(duner, count.value);
+            cartCount.innerText = Number(cartCount.innerText) + Number(count.value);
         })
     
         card.append(img, name, weight, category, price, count, addToCart);
