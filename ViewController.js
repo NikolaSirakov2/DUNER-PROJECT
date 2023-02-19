@@ -3,6 +3,7 @@ class ViewController {
     window.addEventListener("hashchange", this.changeMainPage);
     window.addEventListener("load", this.changeMainPage);
     this.dunerManager = new DunerManager();
+    this.cartManager = new CartManager();
   }
 
   changeMainPage = () => {
@@ -63,10 +64,13 @@ class ViewController {
         let count = createElement("input");
         count.type = "number";
         count.value = 1;
-        count.style.width = "100px"
+        count.style.width = "100px";
     
         let addToCart = createElement("button");
         addToCart.innerText = "Add to Cart";
+        addToCart.addEventListener("click", () => {
+            this.cartManager.addToCartt(duner, count.value);
+        })
     
         card.append(img, name, weight, category, price, count, addToCart);
     
