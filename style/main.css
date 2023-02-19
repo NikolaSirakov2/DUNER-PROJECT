@@ -13,6 +13,7 @@ main>div {
 #cart {
     background-color: coral;
     display: none;
+    display: flex;
 }
 
 #order {
@@ -39,4 +40,14 @@ main>div {
     width: 230px;
     height: 350px;
     background-color: bisque;
+}
+
+.cartContainer li{
+    font-size: larger;
+    padding: 10px;
+}
+
+.cartContainer li span {
+    background-color: antiquewhite;
+    padding: 2px 5px;
 }
